@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from 'prop-types'
 import { Link } from "react-router-dom";
 const Tag = function Tag(props: any) {
     return (<div className={`${props.css} tag`}>

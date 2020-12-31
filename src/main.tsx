@@ -4,6 +4,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import './css/style.css';
+import './css/nice.css';
 import "./less/app.less"
 import Print from './utils/print';
 

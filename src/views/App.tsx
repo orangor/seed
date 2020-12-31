@@ -9,7 +9,7 @@ const Head = function () {
     return (<div className={`heade `}>
         {
             HEADE.map((item: any, index: any) => {
-                return < Tag data={item} css={`${"color_" + GET_COLOR().name} ${"background_" + GET_COLOR().name}`} key={index} ></ Tag>
+                return < Tag data={item} css={`${"color_" + GET_COLOR().name} ${"nice3"}`} key={index} ></ Tag>
             })
         }
     </div >)
