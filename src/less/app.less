@@ -1,11 +1,14 @@
 body{
 margin: 0px;
  /* 关键样式 */
-    background: rgb(164, 189, 166);
+    background: rgb(47, 138, 241);
                      
     background-size: 30px 30px;
     background-position: 0 0, 15px 15px;
 	
+ 
+}
+input{
  
 }
 a{ 
@@ -13,28 +16,39 @@ a{
 
 }
 .heade{
-min-height: 80px;
-padding: 0 300px 0 300px ;
+min-height: 35px;
+padding: 0 300px 0 0px ;
 }
-
+.seed-content{
+  margin: 20px 0px 0px 0px ;
+  padding: 10px;
+  background: rgb(48, 186, 228);
+  min-height: 2000px;
+}
 .tag{
-    width: 100px;
-    height: 80px;
+    width: 50px;
+    height: 30px;
     float: left;
- 
+ border: 1px white solid;
     .title{
         font-size: 24px;
           text-align: center;  
         height: 100%;
-        line-height: 80px;
+        line-height: 30px;
+        color: rgb(255, 255, 255);
         
+    }
+    .isTouchBar{
+      background: rgb(6, 241, 151);
+      
     }
 .cell-list{
   position:absolute;
   display: none;
-  background: rgba(146, 139, 139, 0.5);
+  background: rgb(252, 253, 253);
     margin-top: 0px;
-    width: 200px;
+    width: 150px;
+    border-radius: 5px;
     .cell{
     font-size: 20px;
     height: 24px;
@@ -55,4 +69,71 @@ padding: 0 300px 0 300px ;
   height: 300px;
   background-image: url(../images/body.jpg);
  background-size:cover;
+}
+
+.tip{
+  width: 100px;
+  height: 100px;
+  float: left;
+  border: chocolate 1px solid;
+  margin: 3px;
+  border-radius: 5px;
+  .title{
+    color: wheat;
+  }
+}
+.card{
+
+}
+.add_card{
+ 
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  padding: 0px 10px 0px 20px ;
+  .title{
+  color: rgb(255, 255, 255);
+  }
+   
+}
+.add_card:hover{
+  background: rgba(6, 241, 151,0.3);
+}
+.add-card-process{
+  .dance-input{
+  outline-color:#00ff00;
+    width: 200px;
+    height: 40px;
+    border: 1px solid rgb(30, 210, 120);
+    border-radius: 5px;
+  }
+  .dance-button-box{
+    margin-top: 5px;
+  .dance-button-yes{
+    float: left;
+    width: 80px;
+    height: 30px;
+    font-size: 20px;
+    background: #5bc25b;
+    padding: 0px 10px 0px 10px ;
+    border: 1px solid rgb(78, 172, 91);
+    border-radius: 5px ;
+    color: rgb(255, 255, 255);
+  }
+  .dance-button-yes:hover{
+     background: #03b903;
+   
+  }
+  .dance-button-no{
+     float: left;
+     width: 30px;
+     height: 30px;
+    margin-left: 20px;
+      color: #df3e0d;
+   
+  }
+  }
 }

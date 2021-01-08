@@ -1,6 +1,7 @@
 import { Login } from "../views/login"
 import { Login2 } from "../views/login2"
 import { Home } from "../views/home"
+import { Plan } from "../views/plan/plan"
 interface router {
     path: string,
     component: any,
@@ -19,6 +20,9 @@ const routers: Array<router> = [
         path: '/login2',
         component: Login2
 
+    }, {
+        path: "/plan",
+        component: Plan
     }
 ]
 export { routers }

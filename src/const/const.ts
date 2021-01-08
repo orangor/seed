@@ -33,6 +33,11 @@ const HEADE: any = [{
         { name: "Golange", url: "http://docscn.studygolang.com/doc/" }]
 },
 {
+    name: "计划",
+    link: "/plan",
+    list: []
+},
+{
     name: "HT",
     link: "",
     list: []
@@ -41,4 +46,13 @@ import COLOR from "../json/color.json"
 const GET_COLOR = function () {
     return COLOR.colors[Math.floor(Math.random() * COLOR.colors.length)]
 }
-export { HEADE, GET_COLOR }
+const DANCE_KEY = {
+    YES: 1,
+    NO: 2
+}
+
+
+
+
+
+export { HEADE, GET_COLOR, DANCE_KEY }

@@ -7,7 +7,6 @@ import './css/style.css';
 import './css/nice.css';
 import "./less/app.less"
 import Print from './utils/print';
-
 import { App } from "./views/App"
 if (process.env.NODE_ENV !== 'production') {
     console.log('Looks like we are in development mode!');
@@ -15,7 +14,6 @@ if (process.env.NODE_ENV !== 'production') {
 function component(id: any) {
     var element = document.createElement('div');
     element.id = id;
-
     var button = document.createElement('button');
     var br = document.createElement('br');
     button.innerHTML = 'Click me and look at the console!';

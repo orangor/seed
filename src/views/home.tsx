@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import { Tip } from "../components/tip"
-let tips = [{ name: "JZ", }, { name: "SF" }]
+import { Button } from 'antd';
+let tips = [{ name: "JZ", link: "/" }, { name: "SF", link: "/login" }]
 const Page1 = function () {
     return (<div>
+        <Button>Button</Button>
         {
             tips.map((item, i) => {
                 return (<Tip data={item} key={i}></Tip>)

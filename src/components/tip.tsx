@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 const Tip = function (props: any) {
-    return (<div className={`${props.css} tip`}>
+    const [css, setCss] = useState("");
+    useEffect(() => {
+        // Update the document title using the browser API
+
+    });
+    return (
         <Link to={props.data.link}>
-            <div className={`title`}>{props.data.name}</div>
-        </Link>
-    </div >)
+            <div className={`${props.css} tip`}>
+                <div className={`title`}>{props.data.name}</div>
+            </div >
+        </Link >)
 }
 export { Tip }
