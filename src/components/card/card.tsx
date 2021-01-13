@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { DANCE_KEY } from "../../const/const"
+
 function Add_Card(props: any) {
     let [isClick, setClick] = useState(false)
     let [value, setValue] = useState("")
@@ -9,9 +10,8 @@ function Add_Card(props: any) {
     function cardOutClick(type: number) {
         if (type === DANCE_KEY.YES) {
             if (value) {
-                console.log(value, type)
                 setClick(false)
-
+                props.addNode(String(value))
             }
         } else {
             setClick(false)
@@ -38,10 +38,10 @@ function Add_Card(props: any) {
 }
 function Card(parps: any) {
     return (<div className={`card`}>
-        <div className={`title`}></div>
+        <div className={`title`}>{parps.node.name}</div>
         <div className={`content`}>
             {
-                parps.list.map((item: any, index: number) => {
+                parps.node.list.map((item: any, index: number) => {
                     return <div key={index} onClick={parps.callback}>{item.name}</div>
                 })
             }

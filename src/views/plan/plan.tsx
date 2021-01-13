@@ -1,7 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { CARD_NODE, CARD_CELL } from "../../const/const"
 import { Add_Card, Card } from "../../components/card/card"
+
 const Plan = function () {
-    return (<div className={`plane`}><Add_Card></Add_Card></div>)
+    let cn: CARD_NODE[] = []
+    let [cards, setCards] = useState(JSON.parse(JSON.stringify(cn)))
+    function addCardNode(val: string) {
+        setCards([
+            ...cards, { name: val, list: [] }])
+    }
+    useEffect(() => {
+    });
+    return (<div className={`plane`}>
+        {cards.map((item: any, index: number) => {
+            return <Card node={item} key={index + "cn"} />
+        })}
+        <Add_Card addNode={addCardNode}></Add_Card>
+    </div>)
 }
 export { Plan }

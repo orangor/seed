@@ -33,7 +33,7 @@ const HEADE: any = [{
         { name: "Golange", url: "http://docscn.studygolang.com/doc/" }]
 },
 {
-    name: "计划",
+    name: "P",
     link: "/plan",
     list: []
 },
@@ -52,7 +52,14 @@ const DANCE_KEY = {
 }
 
 
+interface CARD_CELL {
+    name: string
+}
+interface CARD_NODE {
+    name: string;
+    list: CARD_CELL[]
+}
 
 
 
-export { HEADE, GET_COLOR, DANCE_KEY }
+export { HEADE, GET_COLOR, DANCE_KEY, CARD_CELL, CARD_NODE }
