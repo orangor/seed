@@ -79,24 +79,57 @@ padding: 0 300px 0 0px ;
   margin: 3px;
   border-radius: 5px;
   .title{
-    color: wheat;
+    color: rgb(235, 225, 208);
+   
   }
 }
 .card{
+  cursor: pointer;
 float: left;
-width:200px ;
+width:300px ;
+border-radius: 5px;
+margin: 10px 20px 10px 20px;
+background: rgb(	230 230 250);
+
+ .title{
+   margin-top: 10px;
+   text-align: center;
+   color:rgb(126, 122, 122);
+    font-size: 24px;
+ }
+ .card-contact-box{
+       padding: 10px;
+    .content{
+       .card-cell{
+         font-size: 18px;
+         padding-left:10px ;
+    margin: 10px 0px 10px 0px ;
+     background: white;
+    border-radius: 5px;
+    height: 40px;
+    line-height: 40px  
+   }
+   }
+ }
+  
+ 
+}
+.add_card_200{
+  margin-top: 10px;
+  width: 200px;
+   float: left;
+  
 }
 .add_card{
-  float: left;
   cursor: pointer;
-  width: 200px;
+  width: 100%;
   height: 40px;
   line-height: 40px;
   font-size: 18px;
   background: rgba(255, 255, 255, 0.3);
   border-radius: 5px;
-  padding: 0px 10px 0px 20px ;
   .title{
+  margin-left: 10%;
   color: rgb(255, 255, 255);
   }
    
@@ -105,12 +138,11 @@ width:200px ;
   background: rgba(6, 241, 151,0.3);
 }
 .add-card-process{
-  float: left;
-  width: 200px;
+  width: 100%;
   height: 100px;
   .dance-input{
   outline-color:#00ff00;
-    width: 200px;
+  width: calc(100% - 6px) ;
     height: 40px;
     border: 1px solid rgb(30, 210, 120);
     border-radius: 5px;

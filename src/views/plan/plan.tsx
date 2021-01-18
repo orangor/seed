@@ -14,9 +14,12 @@ const Plan = function () {
     });
     return (<div className={`plane`}>
         {cards.map((item: any, index: number) => {
+
             return <Card node={item} key={index + "cn"} />
         })}
-        <Add_Card addNode={addCardNode}></Add_Card>
+        <div className={"add_card_200"}>
+            <Add_Card addNode={addCardNode}></Add_Card>
+        </div>
     </div>)
 }
 export { Plan }

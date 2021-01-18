@@ -5,6 +5,7 @@ module.exports = merge(common, {
     devtool: 'inline-source-map',
     devServer: {
         contentBase: './dist',
+        disableHostCheck: true,
         //  historyApiFallback: true
     }
 });
