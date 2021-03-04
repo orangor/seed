@@ -1,3 +1,4 @@
+import Item from "antd/lib/list/Item";
 import React, { useState, useEffect, useRef } from "react";
 import { DANCE_KEY } from "../../const/const"
 import { CARD_CELL } from "../../const/const"
@@ -32,7 +33,6 @@ function Add_Card(props: any) {
         setValue(event.target.value)
     }
     if (isClick) {
-
         return (<div className={`add-card-process`}>
             <form>
                 <input className="dance-input" placeholder="请输入列表标题...." ref={inputRef} onKeyDown={(e) => handKeyDown(e)} type="text" onChange={change} />
@@ -49,22 +49,62 @@ function Add_Card(props: any) {
 }
 function Card(parps: any) {
     let cl: CARD_CELL[] = []
+    let dd: any;
     let [list, setList] = useState(cl)
+    let [dropId, setDropId] = useState(dd)
     function addNode(val: string) {
-        setList([...list, { name: val }])
+        let idx = Math.ceil(Math.random() * 100000) + 1 + "";
+        setList([...list, { name: val, id: idx }])
     }
 
-    return (<div className={`card`} draggable="true">
+    function allowDrop(ev: any) {
+        ev.preventDefault();
+    }
+
+    function drag(ev: any) {
+        ev.dataTransfer.setData("item_name", ev.target.innerHTML);
+        ev.dataTransfer.setData("item_id", ev.target.id);
+    }
+    function drag_end(ev: any) {
+        let newList: CARD_CELL[] = []
+        let k = false
+        list.forEach(item => {
+            if (item.id !== ev.target.id || k) {
+                newList.push(item)
+            } else {
+                k = true
+            }
+        })
+        if (parps.RT) {
+            setList(newList)
+            parps.callbackRT(false)
+        }
+    }
+    function drop(ev: any) {
+
+        ev.preventDefault();
+        let item: CARD_CELL = { name: "", id: "" }
+        item.name = ev.dataTransfer.getData("item_name");
+        item.id = ev.dataTransfer.getData("item_id");
+        console.log(ev.target.parentNode)
+        setList([...list, item])
+        parps.callbackRT(true)
+
+        // ev.target.parentNode.appendChild(document.getElementById(dropId));
+    }
+    return (<div className={`card`} >
         <div className={`title`}>{parps.node.name}</div>
         <div className={`card-contact-box`}>
-            <div className={`content`}>
+            <div className={`content`} id={"div1"} onDrop={drop} onDragOver={allowDrop}>
                 {
                     list.map((item: any, index: number) => {
-                        return <div key={index} onClick={parps.callback} className={`card-cell`}>{item.name}</div>
+                        return <div key={index} id={item.id} onClick={parps.callback} draggable="true" onDragStart={drag} onDragEnd={drag_end
+
+                        } className={`card-cell`}>{item.name}</div>
                     })
                 }
-                <div ><Add_Card addNode={addNode}></Add_Card></div>
             </div>
+            <div ><Add_Card addNode={addNode}></Add_Card></div>
         </div>
 
     </div >)

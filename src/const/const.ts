@@ -30,7 +30,12 @@ const HEADE: any = [{
             url: "https://www.tslang.cn/docs/home.html"
         },
         { name: "Node", url: "http://nodejs.cn/api/" },
-        { name: "Golange", url: "http://docscn.studygolang.com/doc/" }]
+        { name: "Golange", url: "http://docscn.studygolang.com/doc/" },
+        {
+            name: 'JS', url: "https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_Drag_and_Drop_API"
+        }
+
+    ]
 },
 {
     name: "P",
@@ -54,12 +59,11 @@ const DANCE_KEY = {
 
 interface CARD_CELL {
     name: string
+    id: string
 }
 interface CARD_NODE {
     name: string;
     list: CARD_CELL[]
 }
-
-
 
 export { HEADE, GET_COLOR, DANCE_KEY, CARD_CELL, CARD_NODE }
