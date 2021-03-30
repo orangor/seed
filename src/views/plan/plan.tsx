@@ -11,8 +11,6 @@ const Plan = function () {
         setCards([
             ...cards, { name: val, list: [] }])
     }
-    useEffect(() => {
-    });
     return (<div className={`plane`}>
         {cards.map((item: any, index: number) => {
 
