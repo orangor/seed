@@ -114,8 +114,8 @@ function Card(parps: any) {
             } else {
                 new_list.splice(haveId, 1)
             }
-
         }
+        nth = -1
         setList(new_list)
         parps.callbackRT(true)
     }
