@@ -62,27 +62,20 @@ function Card(parps: any) {
         ev.dataTransfer.setData("item_id", ev.target.id);
     }
     function drag_end(ev: any) {
-        console.log(self)
         if (self) {
             setSelf(false)
         } else {
             let newList: CARD_CELL[] = []
-            let kth = -1;
-            list.forEach((item, index) => {
+            list.forEach((item) => {
                 if (item.id !== ev.target.id) {
                     newList.push(item)
-                } else {
-                    kth = index
                 }
             })
-            setTimeout(() => {
-                newList.splice(kth, 1)
-            }, 10);
             if (parps.RT) {
                 setList(newList)
-                parps.callbackRT(false)
             }
         }
+        parps.callbackRT(false)
     }
     function drop(ev: any) {
         ev.preventDefault();
@@ -93,19 +86,17 @@ function Card(parps: any) {
         let ids = list.map(item => {
             return item.id
         })
-        let haveId = ids.indexOf(cell.id)
 
+        let haveId = ids.indexOf(cell.id)
         if (haveId === -1) {
             setSelf(false)
-            console.log(1, self)
             new_list = list
             new_list.splice(nth, 0, cell)
         } else {
             setSelf(true)
             console.log(2, self)
             list.map((item, i) => {
-
-                if (haveId > nth) {
+                if (haveId >= nth) {
                     if (i === nth) {
                         new_list.push(cell)
                     }
@@ -118,7 +109,7 @@ function Card(parps: any) {
                 }
             })
 
-            if (haveId > nth) {
+            if (haveId >= nth) {
                 new_list.splice(haveId + 1, 1)
             } else {
                 new_list.splice(haveId, 1)
