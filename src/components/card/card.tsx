@@ -48,7 +48,6 @@ function Add_Card(props: any) {
 function Card(parps: any) {
     let cl: CARD_CELL[] = []
     let [list, setList] = useState(cl)
-    let nth = -1;
     let [self, setSelf] = useState(false);
     function addNode(val: string) {
         let idx = Math.ceil(Math.random() * 100000) + 1 + "";
@@ -62,6 +61,7 @@ function Card(parps: any) {
         ev.dataTransfer.setData("item_id", ev.target.id);
     }
     function drag_end(ev: any) {
+        console.log(self)
         if (self) {
             setSelf(false)
         } else {
@@ -86,53 +86,52 @@ function Card(parps: any) {
         let ids = list.map(item => {
             return item.id
         })
-
         let haveId = ids.indexOf(cell.id)
+        let nth = ids.indexOf(ev.target.id)
+        if (nth === -1) {
+            return
+        }
+
         if (haveId === -1) {
             setSelf(false)
+            console.log(1, self)
             new_list = list
             new_list.splice(nth, 0, cell)
         } else {
             setSelf(true)
-            console.log(2, self)
             list.map((item, i) => {
                 if (haveId >= nth) {
                     if (i === nth) {
-                        new_list.push(cell)
+                        new_list.push(cell, item)
+                    } else {
+                        new_list.push(item)
                     }
-                    new_list.push(item)
-                } else if (haveId < nth) {
-                    new_list.push(item)
+
+                } else {
                     if (i === nth) {
-                        new_list.push(cell)
+                        new_list.push(item, cell)
+                    } else {
+                        new_list.push(item)
                     }
                 }
             })
-
             if (haveId >= nth) {
                 new_list.splice(haveId + 1, 1)
             } else {
                 new_list.splice(haveId, 1)
             }
         }
-        nth = -1
         setList(new_list)
         parps.callbackRT(true)
     }
-    function dropCell(ev: any) {
-        let ids = list.map(item => {
-            return item.id
-        })
-        nth = ids.indexOf(ev.target.id)
-    }
-    return (<div className={`card`} >
+    return (<div className={`card`} onDragStart={drag} onDrop={drop}>
         <div className={`title`}>{parps.node.name}</div>
         <div className={`card-contact-box`}>
-            <div className={`content`} id={"div1"} onDrop={drop} onDragOver={allowDrop}>
+            <div className={`content`} id={"div1"} >
                 {
                     list.map((item: any, index: number) => {
-                        return <div key={index} id={item.id} onClick={parps.callback} draggable="true" onDragStart={drag} onDragEnd={drag_end
-                        } className={`card-cell`} onDrop={dropCell}>{item.name}</div>
+                        return <div key={index} id={item.id} onClick={parps.callback} draggable="true" onDragOver={allowDrop} onDragEnd={drag_end
+                        } className={`card-cell`}>{item.name}</div>
                     })
                 }
             </div>
