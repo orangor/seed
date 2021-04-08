@@ -61,7 +61,6 @@ function Card(parps: any) {
         ev.dataTransfer.setData("item_id", ev.target.id);
     }
     function drag_end(ev: any) {
-        console.log(self)
         if (self) {
             setSelf(false)
         } else {
@@ -88,7 +87,14 @@ function Card(parps: any) {
         })
         let haveId = ids.indexOf(cell.id)
         let nth = ids.indexOf(ev.target.id)
+        console.log(haveId, nth)
         if (nth === -1) {
+            if (haveId === -1) {
+                setSelf(false)
+                new_list = list
+                new_list.push(cell)
+                parps.callbackRT(true)
+            }
             return
         }
 
@@ -124,7 +130,7 @@ function Card(parps: any) {
         setList(new_list)
         parps.callbackRT(true)
     }
-    return (<div className={`card`} onDragStart={drag} onDrop={drop}>
+    return (<div className={`card`} onDragStart={drag} onDrop={drop} onDragOver={allowDrop}>
         <div className={`title`}>{parps.node.name}</div>
         <div className={`card-contact-box`}>
             <div className={`content`} id={"div1"} >

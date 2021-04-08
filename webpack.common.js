@@ -20,9 +20,6 @@ module.exports = {
         }),
 
     ],
-
-
-
     module: {
         rules: [
             {

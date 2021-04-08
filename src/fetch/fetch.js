@@ -1,6 +1,6 @@
-export default async (url = '', data = {}, type = 'GET', method = 'fetch') => {
+export const fech = async (url = '', data = {}, type = 'GET', method = 'fetch') => {
     type = type.toUpperCase();
-    url = baseUrl + url;
+    url = "" + url;
 
     if (type == 'GET') {
         let dataStr = ''; //数据拼接字符串
@@ -16,11 +16,10 @@ export default async (url = '', data = {}, type = 'GET', method = 'fetch') => {
 
     if (window.fetch && method == 'fetch') {
         let requestConfig = {
-            credentials: 'include',//为了在当前域名内自动发送 cookie ， 必须提供这个选项
+            // credentials: 'include',//为了在当前域名内自动发送 cookie ， 必须提供这个选项
             method: type,
             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                "Content-Type": "application/json",
             },
             mode: "cors",//请求的模式
             cache: "force-cache"
@@ -73,3 +72,5 @@ export default async (url = '', data = {}, type = 'GET', method = 'fetch') => {
         })
     }
 }
+
+
