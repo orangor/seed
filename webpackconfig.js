@@ -8,7 +8,7 @@ module.exports = {
     },
     devtool: 'inline-source-map',
     devServer: {
-        contentBase: './dist',
+        static:'./dist',
         hot: true
     },
     plugins: [
@@ -22,6 +22,9 @@ module.exports = {
     output: {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist')
+    },
+    node: {
+        fs: "empty"
     },
 
     module: {

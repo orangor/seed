@@ -6,6 +6,12 @@ import ReactDOM from "react-dom";
 import './css/style.css';
 import './css/nice.css';
 import "./less/app.less"
+import 'antd/dist/antd.css';
+import "./less/btn.less"
+import "./css/css3-ink-button/css/style.css"
+import "./css/css3-3d-svg-button/css/style.less"
+import "./css/16-css3-animated-buttons/style.less"
+
 import Print from './utils/print';
 import { App } from "./views/App"
 if (process.env.NODE_ENV !== 'production') {

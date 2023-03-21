@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
-import { DANCE_KEY } from "../../const/const"
-import { CARD_CELL } from "../../const/const"
+import { Modal, Button } from 'antd';
+import { DANCE_KEY, CARD_CELL } from "../../const/const"
+import {
+    AddCardCell
+} from "../../axios/client"
+import {Modal1,Modal2} from "../modal"
+import Item from "antd/lib/list/Item";
 function Add_Card(props: any) {
     let [isClick, setClick] = useState(false)
     let [value, setValue] = useState("")
@@ -8,6 +13,7 @@ function Add_Card(props: any) {
     let inputRef = useRef(inp)
     function cardOnClick() {
         setClick(true)
+        //选中
         setTimeout(() => { inputRef.current.focus(); })
     }
     function cardOutClick(type: number) {
@@ -41,17 +47,21 @@ function Add_Card(props: any) {
         </div>)
     } else {
         return (<div className={`add_card`} onClick={cardOnClick}>
-            <div className={`title`}>{"+  添加卡片"}</div>
+            <div className={`title`} >{"+  添加卡片"}</div>
         </div>)
     }
 }
+
+
 function Card(parps: any) {
     let cl: CARD_CELL[] = []
     let [list, setList] = useState(cl)
     let [self, setSelf] = useState(false);
     function addNode(val: string) {
-        let idx = Math.ceil(Math.random() * 100000) + 1 + "";
-        setList([...list, { name: val, id: idx }])
+        let idx = Math.ceil(Math.random() * 100000) + 1;
+        console.log(parps.node)
+       AddCardCell({card_id:parseInt(parps.node.id) ,name:val})
+        setList([...list, { name: val, id: idx, nth: list.length, card_id: parps.node.id ,context:""}])
     }
     function allowDrop(ev: any) {
         ev.preventDefault();
@@ -78,7 +88,7 @@ function Card(parps: any) {
     }
     function drop(ev: any) {
         ev.preventDefault();
-        let cell: CARD_CELL = { name: "", id: "" }
+        let cell: CARD_CELL = { name: "", id: 1, nth: 0, card_id: parps.node.id ,context:""}
         cell.name = ev.dataTransfer.getData("item_name");
         cell.id = ev.dataTransfer.getData("item_id");
         let new_list: CARD_CELL[] = [];
@@ -112,7 +122,6 @@ function Card(parps: any) {
                     } else {
                         new_list.push(item)
                     }
-
                 } else {
                     if (i === nth) {
                         new_list.push(item, cell)
@@ -130,14 +139,56 @@ function Card(parps: any) {
         setList(new_list)
         parps.callbackRT(true)
     }
+    const editCallback=(item:any)=>{}
+    const deleteCallback=(item:any)=>{}
+    const cancelCallback=(item:any)=>{}
+    const getRightMenuBtns = () => {
+      const btns = [
+        {
+          text: "编辑",
+          key: "left",
+          handleClick: editCallback,
+        },
+        {
+          text: "删除",
+          key: "right",
+          handleClick: deleteCallback,
+        },
+        {
+          text: "取消",
+          key: "orther",
+          handleClick: cancelCallback,
+        },
+      ]
+      const res = btns.map((item) => {
+        return (
+          <li onClick={() => item.handleClick(item.key)} key={item.key}>
+            {item.text}
+          </li>
+        )
+      })
+  
+      return [...res]
+    }
+
+    let cc: CARD_CELL[] = parps.node.list
+    let [WebKey, setWebKey] = useState(true)
+    if (WebKey) {
+        setTimeout(() => { setList(cc) })
+        setWebKey(false)
+    }
     return (<div className={`card`} onDragStart={drag} onDrop={drop} onDragOver={allowDrop}>
         <div className={`title`}>{parps.node.name}</div>
         <div className={`card-contact-box`}>
             <div className={`content`} id={"div1"} >
+ 
                 {
+
                     list.map((item: any, index: number) => {
-                        return <div key={index} id={item.id} onClick={parps.callback} draggable="true" onDragOver={allowDrop} onDragEnd={drag_end
-                        } className={`card-cell`}>{item.name}</div>
+                     
+                        return <div  key={index}><Modal2 item={item} index={index} ></Modal2></div>
+                        /*<div key={index} id={item.cell_id} onClick={parps.callback}  draggable="true" onDragOver={allowDrop} onDragEnd={drag_end
+                        } className={`card-cell`}>{item.name}</div>*/
                     })
                 }
             </div>

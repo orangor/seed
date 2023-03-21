@@ -26,6 +26,7 @@ module.exports = merge(common, {
             }
         }
     },
+   
     output: {
         //    filename: '[name].bundle.js',
         //   chunkFilename: '[name].bundle.js',

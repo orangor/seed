@@ -12,6 +12,11 @@ module.exports = {
         ]
         // another: './src/another-module.js'
     },
+    output:{
+        path:path.resolve(__dirname,'dist'),
+        filename: '[name].[hash:8].js',
+    }
+,
     devtool: 'inline-source-map',
     plugins: [
         new CleanWebpackPlugin(),
@@ -29,7 +34,7 @@ module.exports = {
                     loader: "babel-loader"
                 }
             },
-
+              
             {
                 test: /\.css$/,
                 use: [
@@ -40,7 +45,9 @@ module.exports = {
             {
                 test: /\.less$/,
                 use: ['style-loader', 'css-loader', 'less-loader']
-            },
+            },  
+           
+        
             {
                 test: /\.tsx?$/,
                 use: 'ts-loader',

@@ -122,6 +122,7 @@ export default {
         return apiAxios('GET', url, params)
     },
     post: (url: string, params: any) => {
+
         return apiAxios('POST', url, params)
     },
     put: (url: string, params: any) => {
