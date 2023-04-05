@@ -107,6 +107,24 @@ interface TAG_NODE{
     type: string;
 } 
 
+
+const  TAG_TYPE2 :any={
+    First:",",
+    Second:"_",
+/*
+third:
+fourth
+fifth
+sixth
+seventh
+eighth
+ninth*/
+}
+const TYPE_VALUE:any={
+F1:"first",
+F2:"second"
+}
+
 interface PEOPRE_NOOE{
     head:{
         skin:string;/*皮肤*/
@@ -132,4 +150,4 @@ interface CHECK_TAG{
     data:TAG_NODE[];
 }
 
-export { HEADE, GET_COLOR, DANCE_KEY, CARD_CELL, CARD_NODE,ROLL_BOX,SONG_PICK,TAG_NODE ,CHECK_TAG}
+export { HEADE, GET_COLOR, DANCE_KEY, CARD_CELL, CARD_NODE,ROLL_BOX,SONG_PICK,TAG_NODE ,CHECK_TAG,TAG_TYPE2,TYPE_VALUE}

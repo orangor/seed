@@ -6,7 +6,7 @@ import { GetGoodSentences,GetGoodSentencesLike,GetTag } from "../../axios/client
 import "./tag.less"
 import { Pagination,Input ,Table,Tag,Select   } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-import {TAG_NODE,CHECK_TAG} from "../../const/const"
+import {TAG_NODE,CHECK_TAG,TAG_TYPE2,TYPE_VALUE} from "../../const/const"
 const { Search } = Input;
 const DrawTag = function () {
      let cn: TAG_NODE[] = []
@@ -67,7 +67,6 @@ const DrawTag = function () {
   ]
   async function startList(value:string|2){
 
-    console.log("成功",value)
   if (CooKey) {
 
 
@@ -158,7 +157,20 @@ if(m.field===value){
         ckoptions.map((m:CHECK_TAG)=>{
 return(<span key={m.field}>{
   m.data.map((d:TAG_NODE)=>{
-      return(<span key={d.id}>{d.value+","}</span>)
+    if(d.type2==TYPE_VALUE.F2){
+      return(<span key={d.id}>{
+        
+        d.value+TAG_TYPE2.Second
+        
+        }</span>)
+    }else{
+      return(<span key={d.id}>{
+        
+        d.value+TAG_TYPE2.First
+        
+        }</span>)
+    }
+     
            })
 }</span>)
     
